@@ -3,26 +3,26 @@ package tests
 import (
 	"testing"
 
-//	"github.com/na50r/repo/action1"
+	"github.com/na50r/repo/action1"
 	"github.com/na50r/repo/action2"
 )
 
-// var wordTable = []struct {
-// 	word  string
-// 	count int
-// }{
-// 	{"hello", 5},
-// 	{"world", 5},
-// 	{"test", 4},
-// }
+var wordTable = []struct {
+	word  string
+	count int
+}{
+	{"hello", 5},
+	{"world", 5},
+	{"test", 4},
+}
 
-// func TestWordCountEndpoint(t *testing.T) {
-// 	for _, tt := range wordTable {
-// 		t.Run(tt.word, func(t *testing.T) {
-// 			action1.CalcWordCount(t, tt.word, tt.count)
-// 		})
-// 	}
-// }
+func TestWordCountEndpoint(t *testing.T) {
+	for _, tt := range wordTable {
+		t.Run(tt.word, func(t *testing.T) {
+			action1.CalcWordCount(t, tt.word, tt.count)
+		})
+	}
+}
 
 var userTable = []struct {
 	userId string
@@ -41,4 +41,9 @@ func TestUserData(t *testing.T) {
 			action2.CheckUserData(t, tt.userId, tt.name, tt.age)
 		})
 	}
+}
+
+
+func TestFail(t *testing.T) {
+	t.FailNow()
 }
