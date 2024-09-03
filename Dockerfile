@@ -9,4 +9,4 @@ COPY repo /repo
 
 ENV DATA_PATH=/repo/data
 
-CMD ["sh", "-c", "sleep infinity"]
+CMD ["sh", "-c", "go test -v"]

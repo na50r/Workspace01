@@ -28,6 +28,7 @@ docker push <dockerId>/<name>:<version>
 ```
 
 ### How to Run Pod in Kubernetes
+#### Deployment
 * Assumption: You already have a cluster setup and can execute commands with `kubectl`
 
 * Make a YAML file, using the one from the Documentation is a good start:
@@ -37,7 +38,7 @@ kind: Deployment
 metadata:
   name: nginx-deployment
   labels:
-    app: nginx
+    app: nginx #This is the app name
 spec:
   replicas: 3
   selector:
@@ -64,4 +65,33 @@ kubectl apply -f <yamlFile>
 ```shell
 # Run tests in pod
 kubectl exec -it $(kubectl get pod -l app=<appName> -o jsonpath="{.items[0].metadata.name}") -- sh -c "go test -v"
+```
+
+#### Jobs
+* Use the following YAML as reference
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pi #This is the job name
+spec:
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: perl:5.34.0
+        command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never
+  backoffLimit: 4
+```
+
+* Deploy your Job
+```shell
+kubectl apply -f <yamlFile>
+```
+* Job will either Complete or Fail
+* You can view logs of the Job like this
+
+```shell
+kubectl logs -l job-name=<jobName>
 ```

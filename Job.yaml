@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ws01-test-job
+  labels:
+    app: ws01-test
+spec:
+  template:
+    metadata:
+      labels:
+        app: ws01-test
+    spec:
+      containers:
+      - name: ws01-test
+        image: na50r/ws01-test:v1.1
+      restartPolicy: Never
+  backoffLimit: 4
