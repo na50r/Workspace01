@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: local-stuff-deployment
+  labels:
+    app: local-stuff
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: local-stuff
+  template:
+    metadata:
+      labels:
+        app: local-stuff
+    spec:
+      containers:
+      - name: local-stuff
+        image: na50r/local-stuff:v1.0
