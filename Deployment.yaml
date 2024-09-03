@@ -17,3 +17,5 @@ spec:
       containers:
       - name: ws01-test
         image: na50r/ws01-test:v1.0
+      imagePullSecrets:
+      - name: regcred

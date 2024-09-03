@@ -95,3 +95,10 @@ kubectl apply -f <yamlFile>
 ```shell
 kubectl logs -l job-name=<jobName>
 ```
+
+
+#### Possible Polling Techniques
+
+```shell
+kubectl get job <jobName> -o jsonpath='{.status.conditions[?(@.type=="Complete")].status}'
+```
