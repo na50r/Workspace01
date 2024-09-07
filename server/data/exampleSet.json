@@ -1,0 +1,161 @@
+{
+    "name": "Example Set1",
+    "description": "Contains an extended set of words and their results",
+    "data": [
+        {
+            "word1": "fire",
+            "word2": "water",
+            "res": "steam"
+        },
+        {
+            "word1": "ice",
+            "word2": "fire",
+            "res": "water"
+        },
+        {
+            "word1": "water",
+            "word2": "earth",
+            "res": "mud"
+        },
+        {
+            "word1": "air",
+            "word2": "fire",
+            "res": "smoke"
+        },
+        {
+            "word1": "earth",
+            "word2": "seed",
+            "res": "tree"
+        },
+        {
+            "word1": "flower",
+            "word2": "sun",
+            "res": "bloom"
+        },
+        {
+            "word1": "sand",
+            "word2": "fire",
+            "res": "glass"
+        },
+        {
+            "word1": "electricity",
+            "word2": "metal",
+            "res": "magnet"
+        },
+        {
+            "word1": "snow",
+            "word2": "heat",
+            "res": "water"
+        },
+        {
+            "word1": "clay",
+            "word2": "fire",
+            "res": "pottery"
+        },
+        {
+            "word1": "milk",
+            "word2": "culture",
+            "res": "cheese"
+        },
+        {
+            "word1": "grape",
+            "word2": "time",
+            "res": "wine"
+        },
+        {
+            "word1": "cocoa",
+            "word2": "heat",
+            "res": "chocolate"
+        },
+        {
+            "word1": "flour",
+            "word2": "water",
+            "res": "dough"
+        },
+        {
+            "word1": "dough",
+            "word2": "heat",
+            "res": "bread"
+        },
+        {
+            "word1": "sugar",
+            "word2": "water",
+            "res": "syrup"
+        },
+        {
+            "word1": "tea",
+            "word2": "hot water",
+            "res": "tea infusion"
+        },
+        {
+            "word1": "coffee bean",
+            "word2": "hot water",
+            "res": "coffee"
+        },
+        {
+            "word1": "iron",
+            "word2": "carbon",
+            "res": "steel"
+        },
+        {
+            "word1": "pigment",
+            "word2": "binder",
+            "res": "paint"
+        },
+        {
+            "word1": "wool",
+            "word2": "spindle",
+            "res": "yarn"
+        },
+        {
+            "word1": "yarn",
+            "word2": "needles",
+            "res": "knitwear"
+        },
+        {
+            "word1": "leather",
+            "word2": "thread",
+            "res": "shoes"
+        },
+        {
+            "word1": "paper",
+            "word2": "ink",
+            "res": "book"
+        },
+        {
+            "word1": "silicon",
+            "word2": "metal",
+            "res": "chip"
+        },
+        {
+            "word1": "petroleum",
+            "word2": "refine",
+            "res": "plastic"
+        },
+        {
+            "word1": "oil",
+            "word2": "canvas",
+            "res": "painting"
+        },
+        {
+            "word1": "vinegar",
+            "word2": "baking soda",
+            "res": "volcano"
+        },
+        {
+            "word1": "love",
+            "word2": "time",
+            "res": "family"
+        },
+        {
+            "word1": "data",
+            "word2": "analysis",
+            "res": "insight"
+        },
+        {
+            "word1": "music",
+            "word2": "emotion",
+            "res": "song"
+        }
+    ]
+}

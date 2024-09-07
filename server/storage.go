@@ -29,13 +29,24 @@ func NewPostgresStore() (*PostgresStore, error) {
 }
 
 func (s *PostgresStore) Init() error {
-	return s.createWordTable()
+	return s.createWordCombiTable()
 }
 
-func (s *PostgresStore) createWordTable() error {
+func (s *PostgresStore) createWordCountTable() error {
 	query := `CREATE TABLE IF NOT EXISTS word_count (
 			word VARCHAR(255) PRIMARY KEY,
 			count INT
+			)`
+
+	_, err := s.db.Exec(query)
+	return err
+}
+
+func (s *PostgresStore) createWordCombiTable() error {
+	query := `CREATE TABLE IF NOT EXISTS word_combi (
+			word1 VARCHAR(255),
+			word2 VARCHAR(255),
+			res VARCHAR(255)
 			)`
 
 	_, err := s.db.Exec(query)
@@ -70,4 +81,16 @@ func (s *PostgresStore) GetWordCount(word string) (*WordCount, bool, error) {
 
 	// Word found, return the WordCount and true
 	return wc, true, nil
+}
+
+func (s *PostgresStore) CreateWordCombi(wc *WordCombination) error {
+	query := `INSERT INTO word_combi (word1, word2, res) VALUES ($1, $2, $3)`
+	_, err := s.db.Query(query, wc.Word1, wc.Word2, wc.Result)
+
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("CREATED")
+	return nil
 }

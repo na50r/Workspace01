@@ -41,6 +41,7 @@ func (s *APIServer) Run() {
 	router := newRouter()
 	router.HandleFunc("/wordcount", makeHTTPHandleFunc(s.handleWordCount))
 	router.HandleFunc("/cached", makeHTTPHandleFunc(s.handleWordCountCached))
+	router.HandleFunc("/set1", makeHTTPHandleFunc(s.handleSet1))
 
 	router.HandleFunc("/messages", s.broker.BroadcastMessage).Methods("POST")
 	router.HandleFunc("/stream", s.broker.Stream).Methods("GET")
@@ -107,4 +108,14 @@ func (s *APIServer) handleWordCountCached(w http.ResponseWriter, r *http.Request
 	}
 
 	return WriteJSON(w, http.StatusOK, resp)
+}
+
+func (s *APIServer) handleSet1(w http.ResponseWriter, r *http.Request) error {
+	if r.Method != http.MethodPost {
+		return fmt.Errorf("invalid method %s", r.Method)
+	}
+
+	InitSet1()
+
+	return WriteJSON(w, http.StatusOK, "Set1 initialized")
 }
