@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ws01-test-job-success
+  labels:
+    app: ws01-test
+spec:
+  template:
+    metadata:
+      labels:
+        app: ws01-test
+    spec:
+      containers:
+      - name: ws01-test
+        image: na50r/ws01-test:v1.5
+        command: ["sh", "-c", "./test_bin -test.v -test.run TestUserData"]
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Never
+  backoffLimit: 0

@@ -100,5 +100,5 @@ kubectl logs -l job-name=<jobName>
 #### Possible Polling Techniques
 
 ```shell
-kubectl get job <jobName> -o jsonpath='{.status.conditions[?(@.type=="Complete")].status}'
+kubectl get job test-job -n yapeal -o jsonpath='{.status.conditions[0].type}'
 ```

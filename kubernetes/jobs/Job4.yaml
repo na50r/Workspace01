@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ws01-test-job
+  labels:
+    app: ws01-test
+spec:
+  template:
+    metadata:
+      labels:
+        app: ws01-test
+    spec:
+      containers:
+      - name: ws01-test
+        image: na50r/ws01-test:v1.1
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ws01-test-service
+  labels:
+    app: ws01-test
+spec:
+  selector:
+    app: ws01-test
+  ports:
+    - protocol: TCP
+      port: 80
+      targetport: 8080
