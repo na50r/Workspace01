@@ -7,3 +7,8 @@ type WordCountReqest struct {
 type WordCountResponse struct {
 	Count int `json:"count"`
 }
+
+type WordCount struct {
+	Word  string
+	Count int
+}
