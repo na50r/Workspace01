@@ -100,5 +100,9 @@ kubectl logs -l job-name=<jobName>
 #### Possible Polling Techniques
 
 ```shell
-kubectl get job test-job -n yapeal -o jsonpath='{.status.conditions[0].type}'
+kubectl get job ws01-test-job -n default -o jsonpath='{.status.conditions[0].type}'
+```
+
+```shell
+kubectl logs -f --timestamps  \$(kubectl get pods -l job-name=ws01-test-job -o jsonpath='{.items[0].metadata.name}')
 ```
