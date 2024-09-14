@@ -1,5 +1,7 @@
 enum Stuff {
-    ALPHA, BETA, GAMMA
+
+    ALPHA('alpha'),
+
 }
 
 @Library('shared-library') _
@@ -11,10 +13,9 @@ pipeline {
                 environment name: 'enum_test', value: Stuff.ALPHA.toString()
             }
             steps {
-                println("Works")
+                println('Works')
             }
         }
-
 
         stage('Send Msg') {
             when {
