@@ -1,8 +1,21 @@
-@Library('shared-library') _
+enum Stuff {
+    ALPHA, BETA, GAMMA
+}
 
+@Library('shared-library') _
 pipeline {
     agent any
     stages {
+        stage('Print Env') {
+            when {
+                environment name: 'enum_test', value: Stuff.ALPHA.toString()
+            }
+            steps {
+                println("Works")
+            }
+        }
+
+
         stage('Send Msg') {
             when {
                 environment name: 'send_google', value: 'true'
