@@ -11,8 +11,9 @@ pipeline {
         stage('Run') {
             steps {
                 dir('Workspace01/kubernetes/jobs') {
-                    // Now you're in the 'Workspace01/kubernetes/jobs' directory
                     k8sDeployLocal('Job5')
+                    sleep(5)
+                    k8sStreamLogs('ws01-test-job')
                 }
             }
         }
