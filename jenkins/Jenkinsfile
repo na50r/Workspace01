@@ -10,11 +10,13 @@ pipeline {
         }
         stage('Run') {
             steps {
+                k8sDeleteJob('ws01-test-job')
                 dir('Workspace01/kubernetes/jobs') {
                     k8sDeployLocal('Job5')
                     sleep(5)
-                    k8sStreamLogs('ws01-test-job')
                 }
+                k8sStreamLogs('ws01-test-job')
+                k8sDeleteJob('ws01-test-job')
             }
         }
     }
