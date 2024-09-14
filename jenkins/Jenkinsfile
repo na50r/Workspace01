@@ -3,6 +3,16 @@
 pipeline {
     agent any
     stages {
+        stage('Send Msg') {
+            when {
+                environment name: 'send_google', value: 'true'
+            }
+            steps {
+                sendGoogleMsgV1(env.webhook_url, 'hi from curl')
+                sendGoogleMsgV2(env.webhook_url, 'hi from groovy/http/restClient')
+            }
+        }
+
         stage('Hello') {
             steps {
                 helloWorldV1(name: 'Name', dayOfWeek: 'Day')
