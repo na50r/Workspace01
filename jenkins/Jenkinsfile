@@ -8,7 +8,6 @@ pipeline {
                 environment name: 'send_google', value: 'true'
             }
             steps {
-                sendGoogleMsgV1(env.webhook_url, 'hi from curl')
                 sendGoogleMsgV2(env.webhook_url, 'hi from groovy/http/restClient')
             }
         }
