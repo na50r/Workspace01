@@ -23,9 +23,11 @@ pipeline {
             when {
                 environment name: 'global_trigger', value: 'false'
             }
-            script {
-                currentBuild.result = 'ABORTED'
-                error("Aborting the build.")
+            steps {
+                script {
+                    currentBuild.result = 'ABORTED'
+                    error("Aborting the build.")
+                }
             }
         }
 
