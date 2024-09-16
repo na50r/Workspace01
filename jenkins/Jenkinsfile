@@ -19,6 +19,10 @@ enum Stuff {
 pipeline {
     agent any
     stages {
+        when {
+            environment name: 'global_trigger', value: "false"
+        }
+        }
         stage('Should Job Start?') {
             when {
                 environment name: 'global_trigger', value: "false"
