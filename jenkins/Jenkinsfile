@@ -25,8 +25,9 @@ pipeline {
             }
             steps {
                 script {
-                    currentBuild.result = 'ABORTED'
-                    error("Aborting the build.")
+                    currentBuild.result = 'SUCCESS'
+                    error('Exiting early with success')
+
                 }
             }
         }
