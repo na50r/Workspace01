@@ -28,8 +28,9 @@ pipeline {
             }
             steps {
                 println('Works')
-                Bye.sayBye()
-
+                script {
+                    Bye.sayBye()
+                }
             }
         }
 
