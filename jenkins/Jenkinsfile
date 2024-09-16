@@ -20,12 +20,12 @@ pipeline {
     agent any
     stages {
         when {
-            environment name: 'global_trigger', value: "false"
+            environment name: 'global_trigger', value: 'false'
         }
-        }
+
         stage('Should Job Start?') {
             when {
-                environment name: 'global_trigger', value: "false"
+                environment name: 'global_trigger', value: 'false'
             }
             steps {
                 echo 'Job was triggered but did not start'
@@ -40,7 +40,6 @@ pipeline {
             steps {
                 println('Works')
                 sh('env')
-
             }
         }
 
