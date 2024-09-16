@@ -16,9 +16,10 @@ enum Stuff {
 }
 
 @Library('shared-library') _
-import org.foo.Hello
+import org.foo.Bye
 
-def helloObj = new Hello()
+def byeObj = new Bye()
+
 
 pipeline {
     agent any
@@ -31,7 +32,7 @@ pipeline {
                 println('Works')
                 sh('env')
                 sh('echo $global_trigger')
-                helloObj.sayHello()
+                byeObj.sayBye()
 
             }
         }
