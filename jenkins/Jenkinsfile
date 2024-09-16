@@ -34,7 +34,9 @@ pipeline {
             }
             steps {
                 sendGoogleMsgV2(env.webhook_url, 'hi from groovy/http/restClient')
-                googleBot.sendMsgV2(env.webhook_url, 'hi from groovy/http/restClient')
+                script {
+                    googleBot.sendMsgV2(env.webhook_url, 'hi from groovy/http/restClient')
+                }
             }
         }
 
@@ -57,13 +59,15 @@ pipeline {
 
         stage('Run 2') {
             steps {
-                k8s.deleteJob('ws01-test-job')
-                dir('Workspace01/kubernetes/jobs') {
-                    k8s.deployLocal('Job5')
-                    sleep(5)
+                script {
+                    k8s.deleteJob('ws01-test-job')
+                    dir('Workspace01/kubernetes/jobs') {
+                        k8s.deployLocal('Job5')
+                        sleep(5)
+                    }
+                    k8s.streamLogs('ws01-test-job')
+                    k8s.deleteJob('ws01-test-job')
                 }
-                k8s.streamLogs('ws01-test-job')
-                k8s.deleteJob('ws01-test-job')
             }
         }
     }
