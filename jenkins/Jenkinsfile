@@ -27,7 +27,6 @@ pipeline {
                 script {
                     currentBuild.result = 'SUCCESS'
                     error('Exiting early with success')
-
                 }
             }
         }
@@ -90,9 +89,10 @@ pipeline {
         always {
             when {
                 environment name: 'global_trigger', value: 'false'
-
             }
-            currentBuild.result = 'SUCCESS'
+            steps {
+                currentBuild.result = 'SUCCESS'
+            }
         }
     }
 }
