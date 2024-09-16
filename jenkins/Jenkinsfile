@@ -31,7 +31,7 @@ pipeline {
                 println('Works')
                 sh('env')
                 sh('echo $global_trigger')
-                {
+                script {
                     byeObj.sayBye()
                 }
             }
