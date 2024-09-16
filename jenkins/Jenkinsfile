@@ -15,6 +15,12 @@ enum Stuff {
 
 }
 
+void earlyExit(trigger) {
+    if (trigger == 'false') {
+        currentBuild.result = 'SUCCESS'
+    }
+}
+
 @Library('shared-library') _
 pipeline {
     agent any
@@ -87,12 +93,7 @@ pipeline {
 
     post {
         always {
-            when {
-                environment name: 'global_trigger', value: 'false'
-            }
-            steps {
-                currentBuild.result = 'SUCCESS'
-            }
+            earlyExit(env.global_trigger)
         }
     }
 }
