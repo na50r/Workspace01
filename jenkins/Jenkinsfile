@@ -25,9 +25,7 @@ pipeline {
             }
             steps {
                 println('Works')
-                if (env.global_trigger == 'true') {
-                    println('Global Trigger')
-                }
+                println(env.global_trigger)
 
             }
         }
