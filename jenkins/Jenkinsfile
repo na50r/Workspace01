@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 println('Works')
-                println(env.global_trigger)
+                println(param.global_trigger)
 
             }
         }
