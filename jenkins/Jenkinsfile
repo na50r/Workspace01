@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 echo 'Job was triggered but did not start'
-                exit 0
+                sh('exit 0')
             }
         }
 
