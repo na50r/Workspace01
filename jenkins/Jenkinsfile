@@ -85,4 +85,14 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            when {
+                environment name: 'global_trigger', value: 'false'
+
+            }
+            currentBuild.result = 'SUCCESS'
+        }
+    }
 }
