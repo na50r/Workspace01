@@ -25,6 +25,7 @@ pipeline {
             }
             steps {
                 error('Job not triggered')
+                currentBuild.result = 'ABORTED'
             }
         }
 
