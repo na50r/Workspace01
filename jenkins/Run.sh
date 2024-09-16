@@ -1,4 +1,4 @@
-#docker build -t myjenk .
+docker build -t myjenk .
 
 docker run -d --name jenkins \
            -p 8080:8080 \
