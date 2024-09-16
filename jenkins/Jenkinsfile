@@ -17,7 +17,7 @@ enum Stuff {
 
 @Library('shared-library') _
 import org.foo.Bye
-def Bye = new Bye()
+def Bye = new Bye().sayBye()
 
 pipeline {
     agent any
@@ -28,9 +28,7 @@ pipeline {
             }
             steps {
                 println('Works')
-                script {
-                    Bye.sayBye()
-                }
+                Bye()
             }
         }
 
