@@ -19,10 +19,6 @@ enum Stuff {
 pipeline {
     agent any
     stages {
-        when {
-            environment name: 'global_trigger', value: 'false'
-        }
-
         stage('Should Job Start?') {
             when {
                 environment name: 'global_trigger', value: 'false'
@@ -30,6 +26,7 @@ pipeline {
             steps {
                 echo 'Job was triggered but did not start'
                 sh('exit 0')
+                return
             }
         }
 
