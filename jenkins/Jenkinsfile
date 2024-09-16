@@ -18,7 +18,7 @@ enum Stuff {
 @Library('shared-library') _
 import org.foo.Bye
 
-def myLib = library identifier: 'shared-library', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: 'github-app', remote: 'https://github.com/na50r/jenkins-lib', traits: [gitBranchDiscovery()]])
+def myLib = library identifier: 'shared-library@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: 'github-app', remote: 'https://github.com/na50r/jenkins-lib', traits: [gitBranchDiscovery()]])
 def myCls = myLib.org.foo.Bye
 
 def byeObj = new Bye()
