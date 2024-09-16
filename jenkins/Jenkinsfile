@@ -25,12 +25,9 @@ pipeline {
             }
             steps {
                 println('Works')
-                script { 
-                    def x= new MultiMethod(this);
-                    x.foo()
-                    x.bar()
+                if (env.global_trigger == 'true') {
+                    println('Global Trigger')
                 }
-
 
             }
         }
