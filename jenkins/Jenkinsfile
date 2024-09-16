@@ -20,7 +20,6 @@ import org.foo.Bye
 
 def byeObj = new Bye()
 
-
 pipeline {
     agent any
     stages {
@@ -32,8 +31,9 @@ pipeline {
                 println('Works')
                 sh('env')
                 sh('echo $global_trigger')
-                byeObj.sayBye()
-
+                {
+                    byeObj.sayBye()
+                }
             }
         }
 
