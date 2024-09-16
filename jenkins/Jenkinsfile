@@ -28,8 +28,6 @@ pipeline {
             }
             steps {
                 println('Works')
-                sh('env')
-                sh('echo $global_trigger')
                 Bye.sayBye()
 
             }
