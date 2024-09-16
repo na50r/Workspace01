@@ -16,6 +16,8 @@ enum Stuff {
 }
 
 @Library('shared-library') _
+import org.foo.Hello
+
 pipeline {
     agent any
     stages {
@@ -27,6 +29,7 @@ pipeline {
                 println('Works')
                 sh('env')
                 sh('echo $global_trigger')
+                Hello.sayHello()
             }
         }
 
@@ -61,6 +64,7 @@ pipeline {
 
         stage('Run 2') {
             steps {
+                script {
                     k8s.deleteJob('ws01-test-job')
                     dir('Workspace01/kubernetes/jobs') {
                         k8s.deployLocal('Job5')
@@ -68,6 +72,7 @@ pipeline {
                     }
                     k8s.streamLogs('ws01-test-job')
                     k8s.deleteJob('ws01-test-job')
+                }
             }
         }
     }
