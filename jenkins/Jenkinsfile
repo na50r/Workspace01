@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 echo 'Job was triggered but did not start'
-                currentBuild.result = 'SUCCESS'
+                script { currentBuild.result = 'SUCCESS' }
             }
         }
 
