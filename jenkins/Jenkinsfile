@@ -15,23 +15,21 @@ enum Stuff {
 
 }
 
-void earlyExit(trigger) {
-    if (trigger == 'false') {
-        currentBuild.result = 'SUCCESS'
-    }
-}
-
 @Library('shared-library') _
 pipeline {
     agent any
     stages {
         stage('Should Job Start?') {
             when {
-                environment name: 'global_trigger', value: 'false'
+                anyOf {
+                    environment name: 'global_trigger', value: 'false'
+                    environment name: 'service', value: 'cockpit'
+                    environment name: 'service', value: 'client-gateway'
+                }
             }
             steps {
                 script {
-                    currentBuild.result = 'SUCCESS'
+                    currentBuild.result = 'ABORTED'
                     error('Exiting early with success')
                 }
             }
@@ -88,12 +86,6 @@ pipeline {
                     k8s.deleteJob('ws01-test-job')
                 }
             }
-        }
-    }
-
-    post {
-        always {
-            earlyExit(env.global_trigger)
         }
     }
 }
