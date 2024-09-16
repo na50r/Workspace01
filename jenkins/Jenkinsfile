@@ -25,10 +25,12 @@ pipeline {
             }
             steps {
                 println('Works')
-                script {
-                    def z = new org.foo.Bye()
-                    z.sayBye()
+                script { 
+                    def x= new MultiMethod(this);
+                    x.foo()
+                    x.bar()
                 }
+
 
             }
         }
