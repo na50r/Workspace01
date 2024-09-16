@@ -20,12 +20,11 @@ pipeline {
     agent any
     stages {
         stage('Should Job Start?') {
-            when {
-                environment name: 'global_trigger', value: 'false'
-            }
             steps {
-                currentBuild.result = 'ABORTED'
-                error('Stopping early…')
+                if (env.global_trigger == 'false') {
+                    currentBuild.result = 'ABORTED'
+                    error('Stopping early…')
+                }
             }
         }
 
