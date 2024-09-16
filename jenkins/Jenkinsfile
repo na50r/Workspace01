@@ -16,7 +16,6 @@ enum Stuff {
 }
 
 @Library('shared-library') _
-import org.foo.Hello
 
 pipeline {
     agent any
@@ -30,6 +29,7 @@ pipeline {
                 sh('env')
                 sh('echo $global_trigger')
                 script {
+                    import org.foo.Hello
                     Hello.sayHello()
                 }
             }
