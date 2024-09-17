@@ -16,6 +16,8 @@ enum Stuff {
 }
 
 @Library('shared-library') _
+import constants.Env
+
 pipeline {
     agent any
     stages {
@@ -37,7 +39,7 @@ pipeline {
 
         stage('Print Env') {
             when {
-                environment name: 'enum_test', value: Stuff.ALPHA.toString()
+                environment name: 'enum_test', value: Env.ALPHA.toString()
             }
             steps {
                 println('Works')
