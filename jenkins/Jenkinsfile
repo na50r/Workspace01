@@ -1,20 +1,3 @@
-enum Stuff {
-
-    ALPHA('alpha'),
-
-    private final String value
-
-    Stuff(String value) {
-        this.value = value
-    }
-
-    @Override
-    String toString() {
-        return value
-    }
-
-}
-
 @Library('shared-library') _
 import constants.Env
 
