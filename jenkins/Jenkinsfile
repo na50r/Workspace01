@@ -1,5 +1,6 @@
 @Library('shared-library') _
 import constants.Env
+import functions.K8s
 
 pipeline {
     agent any
@@ -26,6 +27,7 @@ pipeline {
             }
             steps {
                 println('Works')
+                K8s.sayHello()
                 sh('env')
             }
         }
