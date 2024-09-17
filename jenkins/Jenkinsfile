@@ -27,9 +27,7 @@ pipeline {
             }
             steps {
                 println('Works')
-                script {
-                    K8s.sayHello()
-                }
+                K8s.sayHello()
                 sh('env')
             }
         }
