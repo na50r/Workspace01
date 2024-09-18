@@ -58,7 +58,7 @@ pipeline {
 
         stage('Wait') {
             steps {
-                k8sWaitPodReadyV2('job-name=ws01-test-job')
+                k8sWaitPodReady('job-name=ws01-test-job')
             }
         }
 
