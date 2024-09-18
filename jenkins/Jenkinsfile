@@ -47,15 +47,27 @@ pipeline {
                 helloWorldV1(name: 'Name', dayOfWeek: 'Day')
             }
         }
-        stage('Run') {
+        stage('Deploy') {
             steps {
                 k8sDeleteJob('ws01-test-job')
                 dir('Workspace01/kubernetes/jobs') {
                     k8sDeployLocal('Job5')
                 }
+            }
+        }
+
+        stage('Wait') {
+            steps {
                 k8sWaitPodReady('job-name=ws01-test-job')
-                k8sStreamLogs('ws01-test-job')
-                k8sDeleteJob('ws01-test-job')
+            }
+        }
+
+        stage('Run') {
+            steps {
+                script {
+                    k8sStreamLogs('ws01-test-job')
+                    k8sDeleteJob('ws01-test-job')
+                }
             }
         }
 
