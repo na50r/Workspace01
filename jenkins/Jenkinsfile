@@ -65,7 +65,7 @@ pipeline {
         stage('Run') {
             steps {
                 script {
-                    k8sStreamLogs('ws01-test-job')
+                    k8sStreamLogsV2('ws01-test-job')
                     k8sDeleteJob('ws01-test-job')
                 }
             }
