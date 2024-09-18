@@ -15,12 +15,16 @@ pipeline {
             }
             steps {
                 script {
-                    currentBuild.result = 'ABORTED'
-                    error('Exiting early with success')
+                    try {
+                        currentBuild.result = 'ABORTED'
+                        error('Exiting early with success')
+                    } catch (Exception e) {
+                        currentBuild.result = 'SUCCESS'
+                        echo 'Job exited early with success status'
+                    }
                 }
             }
         }
-
         stage('Print Env') {
             when {
                 environment name: 'enum_test', value: Env.ALPHA.toString()
