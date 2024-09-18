@@ -4,44 +4,12 @@ import constants.Env
 pipeline {
     agent any
     stages {
-        stage('Should Job Start?') {
-            when {
-                anyOf {
-                    environment name: 'global_trigger', value: 'false'
-                    environment name: 'service', value: 'cockpit'
-                    environment name: 'service', value: 'client-gateway'
-                }
-            }
-            steps {
-                script {
-                    currentBuild.result = 'ABORTED'
-                    error('Exiting early with success')
-                }
-            }
-        }
-
         stage('Print Env') {
-            when {
-                environment name: 'enum_test', value: Env.ALPHA.toString()
-            }
             steps {
                 println('Works')
                 sh('env')
             }
         }
-
-        stage('Send Msg') {
-            when {
-                environment name: 'send_google', value: 'true'
-            }
-            steps {
-                sendGoogleMsgV2(env.webhook_url, 'hi from groovy/http/restClient')
-                script {
-                    googleBot.sendMsgV2(env.webhook_url, 'hi from groovy/http/restClient')
-                }
-            }
-        }
-
         stage('Hello') {
             steps {
                 helloWorldV1(name: 'Name', dayOfWeek: 'Day')
@@ -55,13 +23,11 @@ pipeline {
                 }
             }
         }
-
         stage('Wait') {
             steps {
                 kubeWaitPodReady('job-name=ws01-test-job')
             }
         }
-
         stage('Run') {
             steps {
                 script {
