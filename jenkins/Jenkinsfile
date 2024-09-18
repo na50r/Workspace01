@@ -21,6 +21,7 @@ pipeline {
                     } catch (Exception e) {
                         currentBuild.result = 'SUCCESS'
                         echo 'Job exited early with success status'
+                        return
                     }
                 }
             }
