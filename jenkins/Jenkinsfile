@@ -16,8 +16,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        currentBuild.result = 'ABORTED'
-                        error('Exiting early with success')
+                        sh 'exit 1'
                     } catch (Exception e) {
                         currentBuild.result = 'SUCCESS'
                         echo 'Job exited early with success status'
