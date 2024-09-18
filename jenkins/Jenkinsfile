@@ -49,24 +49,24 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                k8sDeleteJob('ws01-test-job')
+                kubeDeleteJob('ws01-test-job')
                 dir('Workspace01/kubernetes/jobs') {
-                    k8sDeployLocal('Job5')
+                    kubeDeployLocal('Job5')
                 }
             }
         }
 
         stage('Wait') {
             steps {
-                k8sWaitPodReady('job-name=ws01-test-job')
+                kubeWaitPodReady('job-name=ws01-test-job')
             }
         }
 
         stage('Run') {
             steps {
                 script {
-                    k8sStreamLogs('ws01-test-job')
-                    k8sDeleteJob('ws01-test-job')
+                    kubeStreamLogs('ws01-test-job')
+                    kubeDeleteJob('ws01-test-job')
                 }
             }
         }
